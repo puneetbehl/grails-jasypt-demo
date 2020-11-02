@@ -101,7 +101,7 @@ dataSource:
     pooled: true
     jmxExport: true
     driverClassName: org.h2.Driver
-    username: sa
+    username: 'ENC(H9gyYRcZ60/iFhgtBER+hBOFytgrTb7HQvz5M4q7yBS2ceO/wpMYxgxOz2+JwOL3)'
     password: ''
 
 environments:

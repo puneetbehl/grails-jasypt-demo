@@ -39,7 +39,7 @@ dependencies {
     compile "org.grails:grails-core"
     compile "org.springframework.boot:spring-boot-starter-actuator"
     compile "org.springframework.boot:spring-boot-starter-tomcat"
-    compile "com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3"
+    compile "com.github.ulisesbocchio:jasypt-spring-boot:3.0.3"
     compile "org.grails:grails-web-boot"
     compile "org.grails:grails-logging"
     compile "org.grails:grails-plugin-rest"

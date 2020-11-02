@@ -1,5 +1,8 @@
 package com.objectcomputing.example
 
+import grails.boot.config.GrailsApplicationPostProcessor
+import grails.core.GrailsApplicationLifeCycle
+import org.springframework.context.ApplicationContext
 
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter
 import grails.boot.config.GrailsApplicationPostProcessor
@@ -14,17 +17,20 @@ class CustomGrailsApplicationPostProcessor extends GrailsApplicationPostProcesso
 
     EncryptablePropertySourceConverter converter
 
-    CustomGrailsApplicationPostProcessor(GrailsApplicationLifeCycle lifeCycle, ApplicationContext applicationContext, EncryptablePropertySourceConverter converter, Class... classes) {
+    CustomGrailsApplicationPostProcessor(GrailsApplicationLifeCycle lifeCycle, ApplicationContext applicationContext, Class... classes) {
         super(lifeCycle, applicationContext, classes)
-        this.converter = converter
     }
 
     @Override
     protected void loadApplicationConfig() {
         super.loadApplicationConfig()
-        PropertySources propertySources = ((PropertySourcesConfig) ((DefaultGrailsApplication)grailsApplication).config).getPropertySources()
-        ((EncryptablePropertySourceConverter) applicationContext.getBean('encryptablePropertySourceConverter')).convertPropertySources((MutablePropertySources) propertySources)
-        ((DefaultGrailsApplication)grailsApplication).config = new PropertySourcesConfig(propertySources)
+        if (converter == null) {
+            this.converter = (EncryptablePropertySourceConverter) applicationContext.getBean('encryptablePropertySourceConverter')
+        }
+        PropertySources propertySources = ((PropertySourcesConfig) ((DefaultGrailsApplication) this.grailsApplication).config).getPropertySources()
+        converter.convertPropertySources((MutablePropertySources) propertySources)
+        ((DefaultGrailsApplication) this.grailsApplication).config = new PropertySourcesConfig(propertySources)
 
     }
+
 }

@@ -18,6 +18,7 @@ class TestEncryptedConfigurationSpec extends Specification {
         expect:
         propertyServiceForJasyptStarter.getProperty() == "Password@1"
         grailsApplication.config.getProperty('encrypted.property') == 'Password@1'
+        grailsApplication.config.getProperty('dataSource.username') == 'sa'
         grailsApplication.config.getProperty('grails.converters.encoding') == 'UTF-8'
 
     }
