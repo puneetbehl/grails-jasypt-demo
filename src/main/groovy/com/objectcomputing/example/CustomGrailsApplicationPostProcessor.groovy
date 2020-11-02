@@ -1,9 +1,5 @@
 package com.objectcomputing.example
 
-import grails.boot.config.GrailsApplicationPostProcessor
-import grails.core.GrailsApplicationLifeCycle
-import org.springframework.context.ApplicationContext
-
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertySourceConverter
 import grails.boot.config.GrailsApplicationPostProcessor
 import grails.core.DefaultGrailsApplication
